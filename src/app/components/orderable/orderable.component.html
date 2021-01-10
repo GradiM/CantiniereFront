@@ -6,8 +6,20 @@
     </div>
 
     <mat-tab-group mat-align-tabs="center" dynamicHeight>
-      <mat-tab label="Menus"><app-weekly-menus></app-weekly-menus></mat-tab>
-      <mat-tab label="Plats"><app-meals></app-meals></mat-tab>
+      <!--<mat-tab label="Menus"><app-weekly-menus></app-weekly-menus></mat-tab>
+      <mat-tab label="Plats"><app-meals></app-meals></mat-tab>-->
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="tab-menus-label">Menus</span>
+        </ng-template>
+        <app-weekly-menus></app-weekly-menus>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="tab-meals-label">Plats</span>
+        </ng-template>
+        <app-meals></app-meals>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

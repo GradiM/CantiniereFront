@@ -25,7 +25,7 @@ export class MealsOfMenuComponent implements OnInit {
     private menuService: MenuService,
     private route: ActivatedRoute,
     private orderService: OrderService,
-    private authService: AuthService) { }
+    public authService: AuthService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

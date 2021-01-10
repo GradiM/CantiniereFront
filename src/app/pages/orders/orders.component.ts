@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { API_URL } from '../../shared/constants/api-url';
 import { AuthService } from '../../shared/auth/auth.service';
 import { MealService } from '../../shared/services/meal.service';
 import { MenuService } from '../../shared/services/menu.service';
@@ -106,9 +107,11 @@ export class OrdersComponent implements OnInit {
 
   imageMenu(quantities: QuantityOUT[]): void {
     quantities.forEach((quantity) => {
-      this.menuService.getMenuImage(quantity.menu.imageId).subscribe(
+      //this.menuService.getMenuImage(quantity.menu.imageId)
+      this.menuService.getMenuImage(quantity.menu.id).subscribe(
         (image) => {
-          this.menusImages.push(image);
+          //this.menusImages.push(image);
+          quantity.menu.imgUrl = `${API_URL}/${image.imagePath}`;
         },
         (error) => {
           console.log(error);
@@ -119,9 +122,11 @@ export class OrdersComponent implements OnInit {
 
   imageMeal(quantities: QuantityOUT[]): void {
     quantities.forEach((quantity) => {
-      this.mealService.getMealImage(quantity.meal.imageId).subscribe(
+      //this.mealService.getMealImage(quantity.meal.imageId)
+      this.mealService.getMealImage(quantity.meal.id).subscribe(
         (image) => {
-          this.mealsImages.push(image);
+          //this.mealsImages.push(image);
+          quantity.meal.imgUrl = `${API_URL}/${image.imagePath}`;
         },
         (error) => {
           console.log(error);

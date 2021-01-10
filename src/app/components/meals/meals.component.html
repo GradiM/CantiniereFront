@@ -15,10 +15,14 @@
     <div class="services-inner-box">
       <div class="ser-icon">
         <!-- <img src="../../../../assets/uploads/menu-img-02.jpg" class="img-fluid" alt=""> -->
-        <img [src]="meal.imgUrl" alt="Image du plat"class="img-fluid" alt="Image du plat">
+        <img [src]="meal.imgUrl" alt="Image du plat" width="250" height="218">
       </div>
       <h2>{{ meal.label }}</h2>
-      <a class="hvr-radial-in cursor-pointer" (click)="orderMaker(meal.id)">{{ meal.priceDF }} €</a>
+      <a class="hvr-radial-in"
+        [class]="authService.isUserAuthenticated() ? 'cursor-pointer' : false"
+        (click)="authService.isUserAuthenticated() ? orderMaker(meal.id) : false">
+        {{ meal.priceDF }} €
+      </a>
     </div>
   </div>
 

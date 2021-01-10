@@ -15,7 +15,7 @@
           </ng-template>
         </div>
 
-        <div *ngIf="orders.length > 0" class="col-lg-4">
+        <div *ngIf="orders && orders.length > 0" class="col-lg-4">
           <button *ngIf="orders[0].status === 0" (click)="makeOrder(orders[0].id)"
           class="sim-btn hvr-radial-in m-r-10">
             Commander
@@ -27,7 +27,7 @@
         </div>
       </div>
 
-      <div *ngIf="orders.length > 0">
+      <div *ngIf="orders && orders.length > 0">
         <div *ngIf="orders[0].status === 0" class="row">
           <div class="col-md-8">
             <div class="message-box">
@@ -63,7 +63,7 @@
         <div *ngIf="order.status === 0" class="cursor-pointer delete-product float-right">
           <mat-icon (click)="removeFromOrder(order.id, order.quantity, quantity.id)">delete</mat-icon>
         </div>
-        <div class="row" *ngIf="quantity.menu">
+        <div class="row menu-container" *ngIf="quantity.menu">
           <div class="col-md-8">
             <div class="message-box menu-description-container">
               <h2>Menu: {{ quantity.menu.label }}</h2>
@@ -81,6 +81,7 @@
                   class="img-fluid"
                   alt=""
                 />
+                <!-- <img [src]="quantity.menu.imgUrl" alt="Image du menu" alt="Image du menu" width="280" height="180"> -->
               </div>
             </div>
           </div>
@@ -108,6 +109,7 @@
                   class="img-fluid"
                   alt=""
                 />
+                <!-- <img [src]="quantity.meal.imgUrl" alt="Image du plat" width="250" height="218"> -->
               </div>
             </div>
           </div>

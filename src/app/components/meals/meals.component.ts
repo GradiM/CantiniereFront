@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { API_URL } from '../../shared/constants/api-url';
 import { MealService } from '../../shared/services/meal.service';
 import { OrderService } from '../../shared/services/order.service';
 import { AuthService } from '../../shared/auth/auth.service';
@@ -23,7 +24,7 @@ export class MealsComponent implements OnInit {
   constructor(
     private mealService: MealService,
     private orderService: OrderService,
-    private authService: AuthService) {}
+    public authService: AuthService) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -35,16 +36,18 @@ export class MealsComponent implements OnInit {
       (meals) => {
         this.meals = meals;
         this.loading = false;
-        // this.meals.forEach((meal) => {
-        //   this.mealService.getMealImage(meal.imageId).subscribe(
-        //     (image) => {
-        //       this.mealsImages.push(image);
-        //     },
-        //     (error) => {
-        //       console.log(error);
-        //     }
-        //   );
-        // });
+        this.meals.forEach((meal) => {
+          //this.mealService.getMealImage(meal.imageId)
+          this.mealService.getMealImage(meal.id).subscribe(
+            (image) => {
+              //this.mealsImages.push(image);
+              meal.imgUrl = `${API_URL}/${image.imagePath}`;
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        });
       },
       (error) => {
         console.log(error);

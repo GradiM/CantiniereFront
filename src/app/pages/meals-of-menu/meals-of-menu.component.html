@@ -6,7 +6,9 @@
       <div class="message-box">
         <h2>Menu: {{ menu.label }}</h2>
       </div>
-      <button (click)="orderMaker(menu.id)" class="sim-btn hvr-radial-in cursor-pointer">
+      <button *ngIf="authService.isUserAuthenticated()"
+        (click)="orderMaker(menu.id)"
+        class="sim-btn hvr-radial-in cursor-pointer">
         Ajouter au panier
       </button>
     </header>
@@ -28,7 +30,7 @@
                 class="img-fluid"
                 alt=""
               /> -->
-              <img [src]="meal.imgUrl" class="img-fluid" alt="Image du plat">
+              <img [src]="meal.imgUrl" class="img-fluid" alt="Image du plat" width="250" height="218">
             </div>
             <h2>{{ meal.label }}</h2>
             <a class="hvr-radial-in" href="#">{{ meal.priceDF }} €</a>

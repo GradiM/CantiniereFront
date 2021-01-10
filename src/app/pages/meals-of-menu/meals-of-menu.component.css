@@ -36,3 +36,7 @@ header {
 header .message-box {
   margin-bottom: 20px;
 }
+
+.ser-icon {
+  background-color: initial;
+}

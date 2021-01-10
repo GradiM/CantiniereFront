@@ -58,3 +58,7 @@ header .sim-btn {
 .delete-product:hover {
     color: #99999980;
 }
+
+.menu-container .ser-icon {
+  background-color: initial;
+}

@@ -13,14 +13,14 @@
 
 <!-- Sans image -->
 <div class="gallery-list row">
-  <div *ngFor="let menu of menus" class="col-md-4 col-sm-6">
-    <div class="gallery-single fix">
-      <!--[src]="menu.imgUrl" alt="Image du menu" class="img-fluid"-->
-      <img src="../../../assets/uploads/gallery_img-01.jpg" class="img-fluid" alt="Image du menu">
+  <div *ngFor="let menu of menus" class="col-md-3 col-sm-6">
+    <div class="gallery-single fix cursor-pointer" [routerLink]="['/menu', menu.id, 'meals']">
+      <!-- <img src="../../../assets/uploads/gallery_img-01.jpg" class="img-fluid" alt="Image du menu"> -->
+      <img [src]="menu.imgUrl" alt="Image du menu" alt="Image du menu" width="280" height="202">
       <div class="img-overlay">
         <h3>{{ menu.label }}</h3>
-        <a [routerLink]="['/menu', menu.id, 'meals']" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius">
-          <i class="fa fa-picture-o"></i>
+        <a data-rel="prettyPhoto[gal]" class="hoverbutton global-radius" style="margin-top: 2px;">
+          <i class="fa fa-eye"></i>
         </a>
       </div>
     </div>
