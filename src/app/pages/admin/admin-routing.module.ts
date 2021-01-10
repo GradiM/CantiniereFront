@@ -8,6 +8,8 @@ import { UserComponent } from './user/user.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { NewmealComponent } from './newmeal/newmeal.component';
 import { MenusComponent } from './menus/menus.component';
+import { NewmenuComponent } from './newmenu/newmenu.component';
+import { ManagerMenuComponent } from './manager-menu/manager-menu.component';
 
 const routes: Routes = [
   {
@@ -23,12 +25,20 @@ const routes: Routes = [
     component: ManageAdminComponent 
   },
   {
+    path:'menu/:id',
+    component: ManagerMenuComponent 
+  },
+  {
     path:'ingredients', 
     component: IngredientComponent
   },
   {
     path:'newmeal',
     component: NewmealComponent 
+  },
+  {
+    path:'newmenu',
+    component: NewmenuComponent 
   },
   {
     path:'users', 

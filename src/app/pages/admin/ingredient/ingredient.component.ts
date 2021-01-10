@@ -20,6 +20,7 @@ export class IngredientComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private ingredientService: IngredientService,
     private adminService: AdminService) { }
 
   ngOnInit(): void {
@@ -32,28 +33,6 @@ export class IngredientComponent implements OnInit {
       console.log(data)
       this.ingredients = data; 
     })
-  }
-
-  get(id: number): void {
-    this.adminService.get(id)
-    .subscribe((data: any) => {
-      this.ingredient = data;
-    })
-  }
-
-  onSubmit(): void{
-    if (this.ingredient.id === 0){
-      this.ingredient.push(this.ingredient)
-      }
-      
-  }
-
-  onClick(): void {
-    this.adminService.update(this.ingredient.id, this.ingredient)
-    .subscribe((data)=> {console.log(data)
-      this.router.navigate(['/admin/ingredients']);
-    });
-    
   }
 
 }

@@ -36,6 +36,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PictureDialogComponent } from './components/picture-dialog/picture-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LogoutComponent,
     ProfileComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    PictureDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     MatIconModule,
     MatProgressBarModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
     AuthService,

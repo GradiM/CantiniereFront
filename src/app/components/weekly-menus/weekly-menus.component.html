@@ -15,7 +15,8 @@
 <div class="gallery-list row">
   <div *ngFor="let menu of menus" class="col-md-4 col-sm-6">
     <div class="gallery-single fix">
-      <img src="../../../assets/uploads/gallery_img-01.jpg" class="img-fluid" alt="Image">
+      <!--[src]="menu.imgUrl" alt="Image du menu" class="img-fluid"-->
+      <img src="../../../assets/uploads/gallery_img-01.jpg" class="img-fluid" alt="Image du menu">
       <div class="img-overlay">
         <h3>{{ menu.label }}</h3>
         <a [routerLink]="['/menu', menu.id, 'meals']" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius">

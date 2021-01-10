@@ -5,7 +5,7 @@
         <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
         <div class="container">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
-              <div class="row mb-5">
+              <!-- <div class="row mb-5">
                   <img *ngIf="profilePicture" [src]="profilePicture.image64" class="img-fluid border rounded-circle shadow-sm p-1 mb-3 bg-white" alt="">
                   
                   <div class="custom-file">
@@ -21,8 +21,20 @@
                       Changer
                     </button>
                   </div>
+              </div> -->
+              <!-- /////////////////////////////////// -->
+              <!-- Code d'Oriane -->
+              <div class="row mb-5 btn btn-link picture" mat-raised-button (click)="openDialog()">
+                <span *ngIf="profilePicture">
+                  <img [src]="profilePicture" class="img-fluid border rounded-circle shadow-sm p-3 mb-3 bg-white" alt="">
+                </span>
+                <p  *ngIf="!profilePicture" class="border rounded-circle shadow-sm" style="height: 150px;text-transform: uppercase;font-size: 2em; padding-top: 50px;" >
+                  {{initFirstname}}{{initName}}
+                </p>
+                <p class="profile-camera"><i class="fa fa-camera"></i></p>
               </div>
-              <div class="row">
+              <!-- /////////////////////////////////// -->
+              <div class="row m-t-100">
                 <div class="col-md-5">
                   <div class="form-group row">
                     <div class="col-md-5">

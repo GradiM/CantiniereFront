@@ -40,7 +40,6 @@ export class AuthService {
     const token = localStorage.getItem('jwt');
     // S'il existe est n'est pas expiré la méthode return true
     if (token && !this.jwtHelper.isTokenExpired(token)) {
-      console.log(this.jwtHelper.decodeToken(token));
       return true;
     }
     // Donc si la méthode elle n'a pas return true on continue et on redirige vers la page d'accueil

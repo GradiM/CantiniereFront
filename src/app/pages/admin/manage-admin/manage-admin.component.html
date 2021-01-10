@@ -1,14 +1,26 @@
-<div *ngIf="meal">   
-    <p>manage-admin works!</p>
-    <p>  {{meal.label}}</p>
-</div> 
+<div class="container" *ngIf="meal">
+    <h1 class="text-center">Modifier le plat<span style="color: #8dbd56; padding-left: 10px;">{{meal.label}}</span></h1>
 
-<form>
-    <input name="label" [(ngModel)]="meal.label" >
-    <input name="priceDF" [(ngModel)]="meal.priceDF">
-    <input name="imageId" [(ngModel)]="meal.imageId">
-    <button (click)="onClick()">Submit</button> 
-</form>
+    <form>
+       <div class="form-group">
+            <label >Nom du plat : </label>
+            <input class="form-control"  name="label"  [(ngModel)]="meal.label" > 
+       </div>
+       <div class="form-group">
+            <label for="price">Prix : </label>
+            <input  class="form-control" id="price" name="priceDF" [(ngModel)]="meal.priceDF"> 
+       </div>
+       <div class="form-group">
+            <label for="description">Description : </label>
+            <input class="form-control" id="description" name="description" [(ngModel)]="meal.description" > 
+        </div>
+
+
+        <div class="text-center my-5">
+            <button type="submit" class="btn btn-success" (click)="onClick()">Envoyez</button>
+        </div>
+    </form>
+</div>
 
 
     

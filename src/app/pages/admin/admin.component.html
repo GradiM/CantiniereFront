@@ -3,10 +3,14 @@
 <div *ngIf="meals">   
     <p class="styleAdmin">Nos plats 👩‍🍳</p>
     <section>
+        <div style="font-size: 20px; text-align: center; background:#5bc0de;">
+            <button><a routerLink="/admin/newmeal"><strong> Nouveau Plat </strong></a></button>
+        </div>
+
         <table class="table table-striped">
             <thead>
                 <tr class="barreMenu">
-                <th>Meals 🍵 et <span style="color: rgb(235, 13, 13);"> Ingrédients 🥒</span></th>
+                <th>Plats 🍵 et <span style="color: rgb(235, 13, 13);"> Ingrédients 🥒</span></th>
                 <th>Prix</th>
                 <th>Id</th>
                 <th>Images</th>
@@ -14,8 +18,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let meal of meals">
-            <td><a [routerLink]="['/admin/meal', meal.id]">{{meal.label}}</a>
+            <td><a [routerLink]="['/admin/meal', meal.id]" style="font-size:1.3em;display: block;">{{meal.label}}</a>
                 <ul>
+                    <li>
+                        <small>{{meal.description}}</small>
+                    </li>
                     <li>
                         <div *ngFor="let ingredient of meal.ingredients">
                             <p style="color: red">{{ ingredient.label }}</p>
@@ -28,7 +35,7 @@
             <td>{{meal.imageId}}
                 <div class="ser-icon">
                     <img
-                      src="../../../assets/uploads/menu-img-01.jpg"
+                    [src]="meal.imgUrl" alt="photo des plats"
                       class="img-fluid"
                       alt=""
                     />
@@ -40,6 +47,5 @@
             </tr>
             </tbody> 
         </table>
-        <div style="background-color: blue; font-size: 20px; text-align: center;"><button><a routerLink="/admin/newmeal"><strong> New Meal </strong></a></button></div>
 
     </section>

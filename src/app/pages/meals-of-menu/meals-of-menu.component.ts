@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { API_URL } from '../../shared/constants/api-url';
 import { MenuService } from '../../shared/services/menu.service';
 import { OrderService } from '../../shared/services/order.service';
+import { AuthService } from '../../shared/auth/auth.service';
 
 import { MenuOUT } from '../../shared/interfaces/menu';
 import { ImageOUT } from '../../shared/interfaces/image';
 import { User /*UserOUT*/} from '../../shared/interfaces/user';
-import { AuthService } from '../../shared/auth/auth.service';
 
 @Component({
   selector: 'app-meals-of-menu',
@@ -41,16 +42,18 @@ export class MealsOfMenuComponent implements OnInit {
       (menu) => {
         this.menu = menu;
         this.loading = false;
-        // this.menus.forEach((menu) => {
-        //   this.menuService.getMenuImage(menu.imageId).subscribe(
-        //     (image) => {
-        //       this.menusImages.push(image);
-        //     },
-        //     (error) => {
-        //       console.log(error);
-        //     }
-        //   );
-        // });
+        this.menu.meals.forEach((meal) => {
+          //this.menuService.getMenuImage(meal.imageId)
+          this.menuService.getMenuImage(meal.id).subscribe(
+            (image) => {
+              //this.menusImages.push(image);
+              meal.imgUrl = `${API_URL}/${image.imagePath}`;
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+        });
       },
       (error) => {
         console.log(error);

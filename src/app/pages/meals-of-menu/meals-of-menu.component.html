@@ -23,11 +23,12 @@
         <div class="col-md-3">
           <div class="services-inner-box">
             <div class="ser-icon">
-              <img
+              <!-- <img
                 src="../../../../assets/uploads/menu-img-01.jpg"
                 class="img-fluid"
                 alt=""
-              />
+              /> -->
+              <img [src]="meal.imgUrl" class="img-fluid" alt="Image du plat">
             </div>
             <h2>{{ meal.label }}</h2>
             <a class="hvr-radial-in" href="#">{{ meal.priceDF }} €</a>

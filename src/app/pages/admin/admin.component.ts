@@ -6,12 +6,16 @@ import { UserOUT } from '../../shared/interfaces/user';
 import { User } from '../../shared/interfaces/user';
 import { ImageOUT } from '../../shared/interfaces/image';
 
+import { API_URL } from '../../shared/constants/api-url';
+import { MealService } from 'src/app/shared/services/meal.service';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+
   meals: Array<MealOUT>;
   images: Array<ImageOUT>;
   ingredients: Array<IngredientOUT>;
@@ -19,19 +23,27 @@ export class AdminComponent implements OnInit {
   meal: any;
   router: any;
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService,private mealService: MealService) {
    }
 
   ngOnInit(): void {
     this.list();
-    this.listImg();
   }
 
   list(): void{
     this.adminService.list()
     .subscribe((data: Array<MealOUT>) => {
-      console.log(data)
       this.meals = data; 
+      this.meals.forEach((meal) => {
+        this.mealService.getMealImage(meal.id).subscribe(
+            (image) => {
+              meal.imgUrl = `${API_URL}/`+image.imagePath;
+            },
+            (error) => {
+              console.log(error);
+            }
+         );
+      });
     })
   }
 
@@ -48,16 +60,6 @@ export class AdminComponent implements OnInit {
     .subscribe((data: Array<UserOUT>) => {
       console.log(data)
       this.users = data; 
-    })
-  }
-
-
-
-  listImg(): void{
-    this.adminService.listImg()
-    .subscribe((data: Array<ImageOUT>) => {
-      console.log(data)
-      this.images = data; 
     })
   }
 

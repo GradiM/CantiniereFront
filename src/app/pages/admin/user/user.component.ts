@@ -12,6 +12,7 @@ import { User, UserOUT } from '../../../shared/interfaces/user';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  
   user: any;
   paramId: Params;
   users: Array<User>;
@@ -24,29 +25,16 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.listUser();
-    this.route.params
-    .subscribe(
-      (params: Params) => {
-        this.paramId = params['id'];
-        this.get(+this.paramId)
-      })
   }
 
 
   listUser(): void{
     this.adminService.listUser()
     .subscribe((data: Array<UserOUT>) => {
-      console.log(data)
       this.users = data; 
     })
   }
 
-  get(id: number): void {
-    this.adminService.get(id)
-    .subscribe((data: any) => {
-      this.user = data;
-    })
-  }
 
   onSubmit(): void{
     if (this.user.id === 0){
@@ -56,11 +44,17 @@ export class UserComponent implements OnInit {
   }
 
   onClick(): void {
-    this.adminService.update(this.user.id, this.user)
+    this.userService.update(this.user.id, this.user)
     .subscribe((data)=> {console.log(data)
       this.router.navigate(['/admin/users']);
     });
     
+  }
+
+  onDelete(id:number){
+    this.adminService.deleteUser(id).then(()=>{
+      this.users = this.users.filter(user=>user.id!=id);
+    })
   }
 
 }

@@ -1,29 +1,3 @@
-<!-- <p class="styleAdmin">Utilisateurs</p>
-    <section class="blocAdmin">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                <th style="text-align: center;">Utilisateurs</th>
-                </tr>
-            </thead>
-            <tbody>
-            //<tr *ngFor="let meal of meals"> -->
-            <!-- <td>
-                <div *ngFor="let user of users">
-                    <p>Name: {{ user.name }} FirstName: {{ user.firstname }}</p>
-                </div>           
-            </td>
-            <td> -->
-            <!-- <button type="submit">Modifier</button> -->
-            <!-- <button class="btn btn-danger" (click)="onDelete(person.id)">Delete</button> 
-            <button class="btn btn-success" (click)="editPerson(person)">Update</button>  -->
-            <!-- </td> 
-            </tbody> 
-        </table>
-
-    </section>  -->
-
-
 
     <div *ngIf="users">   
         <p class="styleAdmin">Nos Utilisateurs </p>
@@ -34,20 +8,18 @@
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Caisse</th>
+                    <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let user of users">
-                        <td><a [routerLink]="['/admin/user', user.id]">{{user.name}}</a></td>
+                        <td><a [routerLink]="['/admin/user', user.id]" style="display: block;">{{user.name}}</a></td>
                         <td>{{user.firstname}}</td>
-                        <td>{{user.wallet}}
-                        
-                <td>
+                        <td>{{user.wallet}}</td>
                 <!-- <button type="submit">Modifier</button> -->
-                <!-- <button class="btn btn-danger" (click)="onDelete(person.id)">Delete</button> 
-                <button class="btn btn-success" (click)="editPerson(person)">Update</button>  -->
-                </td> 
-                </tr>
+                <button class="btn btn-danger" (click)="onDelete(user.id)">X</button> 
+                <!-- <button class="btn btn-success" (click)="editPerson(person)">Update</button>  -->
+                    </tr>
                 </tbody> 
             </table>
     

@@ -14,7 +14,8 @@
   <div *ngFor="let meal of meals" class="col-md-3">
     <div class="services-inner-box">
       <div class="ser-icon">
-        <img src="../../../../assets/uploads/menu-img-02.jpg" class="img-fluid" alt="">
+        <!-- <img src="../../../../assets/uploads/menu-img-02.jpg" class="img-fluid" alt=""> -->
+        <img [src]="meal.imgUrl" alt="Image du plat"class="img-fluid" alt="Image du plat">
       </div>
       <h2>{{ meal.label }}</h2>
       <a class="hvr-radial-in cursor-pointer" (click)="orderMaker(meal.id)">{{ meal.priceDF }} €</a>

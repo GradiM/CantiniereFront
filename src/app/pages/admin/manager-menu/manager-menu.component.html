@@ -1,0 +1,25 @@
+<div class="container" *ngIf="menu">
+    <h1 class="text-center">Modifier le <span style="color: #8dbd56; padding-left: 10px;">{{menu.label}}</span>
+    </h1>
+
+    <form>
+       <div class="form-group">
+            <label for="label">Nom du menu : </label>
+            <input class="form-control" id="label" name="label"  [(ngModel)]="menu.label" > 
+       </div>
+       <div class="form-group">
+            <label for="price">Prix : </label>
+            <input  class="form-control" id="price" name="priceDF" [(ngModel)]="menu.priceDF"> 
+       </div>
+       <div class="form-group">
+            <label for="description">Description : </label>
+            <input class="form-control" id="description" name="description" [(ngModel)]="menu.description" > 
+       </div>
+
+
+        <div class="text-center my-5">
+            <button type="submit" class="btn btn-success" (click)="onClick()">Envoyez</button>
+        </div>
+    </form>
+</div>
+

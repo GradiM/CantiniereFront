@@ -21,6 +21,15 @@
           <a class="nav-link" [routerLink]="['home']" [routerLinkActive]="['active']"><span>Accueil</span></a>
         </li>
 
+        <li
+          class="nav-item"
+          *ngIf="authService.isUserAuthenticated() &&
+          authService.userLoggedRoles()[0] === 'ROLE_LUNCHLADY'">
+          <a class="nav-link" [routerLink]="['/admin/menus']" [routerLinkActive]="['active']">
+            <span>Administration</span>
+          </a>
+        </li>
+
         <button *ngIf="authService.isUserAuthenticated(); else notAuthenticated"
           mat-icon-button
           [matMenuTriggerFor]="profile"

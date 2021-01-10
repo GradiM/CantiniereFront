@@ -1,0 +1,23 @@
+
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+  <div class="form-group">
+    <label for="files" class="btn btn-primary" (click)="fileInput.click()"><i class="fa fa-plus"></i> Charger une nouvelle photo</label>
+    <input type="file" id="file" name="file" (change)="handleFileInput($event)" style="display: none;" #fileInput>
+  </div>
+
+  <div style="text-align: center;">
+    <span *ngIf="url">
+      <img [src]="url" alt="photo" class="img-thumbnail">
+    </span>
+    <p *ngIf="!url" class="border rounded-thumbnail shadow-sm" style="height: 100px;width: 100px;text-align:center;text-transform: uppercase;font-size: 2em; margin: 20px 0 0 150px;padding-top: 30px;" >
+         {{data.prenom}}
+    </p>
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions style="margin-top: 20px;">
+  <button  class="mat-raised-button mat-primary" [mat-dialog-close]="url" cdkFocusInitial>Appliquer</button>
+  <button mat-button (click)="onNoClick()" mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

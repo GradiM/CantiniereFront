@@ -1,5 +1,5 @@
 import { Route } from '@angular/compiler/src/core';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminService } from '../../../shared/services/admin.service';
 import { UserService } from '../../../shared/services/user.service';
@@ -12,13 +12,14 @@ import { User } from '../../../shared/interfaces/user';
   styleUrls: ['./user-admin.component.css']
 })
 export class UserAdminComponent implements OnInit {
+
   user: any;
   paramId: Params;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private adminService: AdminService, private userService: UserService) { }
+    private router: Router, 
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.route.params
@@ -37,12 +38,6 @@ export class UserAdminComponent implements OnInit {
     })
   }
 
-  onSubmit(): void{
-    if (this.user.id === 0){
-      this.user.push(this.user)
-      }  
-  }
-
   onClick(): void {
     this.userService.update(this.user.id, this.user)
     .subscribe((data)=> {console.log(data)
@@ -50,5 +45,6 @@ export class UserAdminComponent implements OnInit {
     });
     
   }
+
 
 }

@@ -1,0 +1,41 @@
+<div class="container">
+    <div [hidden]="submitted">
+        <h1 class="text-center">Créer un nouveau menu</h1>
+        <form [formGroup]="menuForm" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+           <div class="form-group">
+                <label for="name">Nom du menu : </label>
+                <input type="text" class="form-control" id="name" formControlName="label" required> 
+           </div>
+           <div class="form-group">
+                <label for="price">Prix : </label>
+                <input type="text" class="form-control" id="price" formControlName="priceDF" required> 
+           </div>
+           <div class="form-group">
+            <label for="description">Description : </label>
+            <input type="text" class="form-control" id="description" formControlName="description" required> 
+        </div>
+
+        <div formArrayName="availableForWeeks">
+            <h3>Disponible Pendant la semaine</h3>
+            <div class="form-group" *ngFor="let idControl of getAvailableForWeeks().controls; let i = index">
+              <input type="number" class="form-control" [formControlName]="i">
+            </div>
+            <button type="button" class="btn btn-success" (click)="onAddAvailableForWeeks()">Ajouter</button>
+        </div><br> 
+
+        <div formArrayName="mealsId">
+            <h3>Nos Id de plat</h3>
+            <div class="form-group" *ngFor="let idControl of getMealsId().controls; let i = index">
+              <input type="number" class="form-control" [formControlName]="i">
+            </div>
+            <button type="button" class="btn btn-success" (click)="onAddMealsId()">Ajouter l'id d'un plat</button>
+        </div>  
+
+            <div class="text-center my-5">
+                <button type="submit" class="btn btn-primary" [disabled]="!registerForm.form.valid">Envoyez</button>
+            </div>
+        </form>
+    </div>
+</div>
+
